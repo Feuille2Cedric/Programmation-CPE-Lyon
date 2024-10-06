@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LINE_LENGTH 256 // Définition de la longueur maximale d'une ligne
+// Définition de la longueur maximale d'une ligne
+#define MAX_LINE_LENGTH 256 
 
 int main() {
     char filename[100]; // Variable pour stocker le nom du fichier
