@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <math.h> // Inclusion des bibliothèques standard nécessaires
 
-#define M_PI 3.14159265358979323846 // Définition de la constante M_PI (valeur de π)
+// Définition de la constante M_PI (valeur de π)
+#define M_PI 3.14159265358979323846 
 
 // Fonction qui calcule l'aire d'un cercle à partir de son rayon
 int calcul_aire(float rayon)
