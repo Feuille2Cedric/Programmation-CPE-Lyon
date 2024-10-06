@@ -9,8 +9,21 @@
 
 
 # Références
+### Apprendre C
 * [Documentation C](https://en.cppreference.com/w/c) : Référence pour les types de données et les fonctions C standard.
+* [OpenClassrooms - Apprendre à programmer en C](https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c) : Tutoriels détaillés sur les bases de la programmation en C.
+* [GeeksforGeeks - C Programming](https://www.geeksforgeeks.org/c-programming-language/) : Cours et tutoriels sur la programmation en C, incluant des exemples de code.
+* [TutorialsPoint - Learn C Programming](https://www.tutorialspoint.com/cprogramming/index.htm) : Guide étape par étape pour apprendre C, des bases aux concepts avancés.
+* [Learn-C](https://www.learn-c.org/) : Un tutoriel interactif en ligne pour apprendre les concepts de base de C.
+
+### Apprendre Python
 * [Documentation Python](https://docs.python.org/3/) : Référence pour les fonctions intégrées et les modules standard Python.
+* [OpenClassrooms - Apprendre Python](https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python) : Tutoriels détaillés sur la programmation en Python.
+* [Real Python](https://realpython.com/) : Articles et tutoriels approfondis pour maîtriser Python.
+* [GeeksforGeeks - Python Programming](https://www.geeksforgeeks.org/python-programming-language/) : Tutoriels couvrant les bases et les aspects avancés de Python.
+* [W3Schools - Python Tutorial](https://www.w3schools.com/python/) : Guide pratique pour apprendre les fondamentaux de Python.
+* [SoloLearn - Learn Python](https://www.sololearn.com/Course/Python/) : Tutoriel interactif pour apprendre Python de manière pratique.
+
 
 # Difficulté
 * **Validation des entrées** utilisateur : Gérer les erreurs de saisie utilisateur, en particulier pour les entrées non valides.
