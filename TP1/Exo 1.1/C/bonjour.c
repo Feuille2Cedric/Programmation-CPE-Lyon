@@ -1,13 +1,16 @@
-#include <stdio.h>
+#include <stdio.h> // Inclut la bibliothèque standard pour les entrées/sorties
 
-// Driver Code 
+// Fonction principale (point d'entrée du programme)
 int main() 
 { 
-    // Print the count of characters 
-    printf("bonjour\n"); 
+    // Affiche le texte "bonjour" suivi d'un saut de ligne
+    printf("bonjour\\n"); 
   
+    // Indique que le programme s'est terminé avec succès
     return 0; 
 }
 
-// To run the script : gcc -o bonjour bonjour.c
-// After that to get the result : ./bonjour
+// Pour compiler le script : gcc -o bonjour bonjour.c
+// Cette commande génère un exécutable nommé "bonjour".
+
+// Pour exécuter le programme compilé et afficher le résultat : ./bonjour
