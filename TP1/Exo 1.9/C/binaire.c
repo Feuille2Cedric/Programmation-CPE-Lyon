@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-#define MAX_BITS 32  // Taille maximale pour un entier 32 bits
+// Taille maximale pour un entier 32 bits
+#define MAX_BITS 32
 
 // Fonction pour convertir un entier en binaire
 void int_to_binary(int n, char bits[]) {
