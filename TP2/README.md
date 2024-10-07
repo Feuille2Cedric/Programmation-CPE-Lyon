@@ -34,6 +34,9 @@ Ce projet comprend différents scripts en Python et en C permettant de manipuler
 * [Programiz - Python Classes and Objects](https://www.programiz.com/python-programming/class) : Introduction aux classes, objets, et programmation orientée objet en Python.
 * [W3Schools - Python Classes/Objects](https://www.w3schools.com/python/python_classes.asp) : Tutoriel pour comprendre les bases des classes et des objets en Python.
 
+### Ressources Générales et Support Technique
+* [ChatGPT par OpenAI](https://chat.openai.com/) : Outil de support interactif pour poser des questions, résoudre des problèmes de code, et approfondir vos connaissances en programmation C et Python.
+
 ## Difficulté
 * **Concepts de base des chaînes de caractères** : Comprendre comment manipuler des chaînes en Python et C, notamment leur concaténation, leur copie, et le calcul de leur longueur, est essentiel pour bien maîtriser les opérations de base des deux langages.
 * **Utilisation de boucles et structures conditionnelles** : Chaque script fait usage de boucles (`for`, `while`) pour parcourir les chaînes de caractères, ainsi que de structures conditionnelles (`if`, `else`) pour la logique de contrôle.
