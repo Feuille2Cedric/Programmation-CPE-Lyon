@@ -27,6 +27,8 @@
 * [W3Schools - Python Tutorial](https://www.w3schools.com/python/) : Guide pratique pour apprendre les fondamentaux de Python.
 * [SoloLearn - Learn Python](https://www.sololearn.com/Course/Python/) : Tutoriel interactif pour apprendre Python de manière pratique.
 
+### Ressources Générales et Support Technique
+* [ChatGPT par OpenAI](https://chat.openai.com/) : Outil de support interactif pour poser des questions, résoudre des problèmes de code, et approfondir vos connaissances en programmation C et Python.
 
 # Difficulté
 * **Validation des entrées utilisateur** : Gérer les erreurs de saisie utilisateur, en particulier pour les entrées non valides (comme des caractères au lieu de nombres).
