@@ -58,6 +58,42 @@ Voici quelques commandes que vous pouvez tester pour observer les réponses du p
     
       ![quit](./pictures/quit.png)
 
+### Étape 4 : Ajout d'une nouvelle commande `date`
+
+Modifiez le code source de `repl.c` pour ajouter une nouvelle commande qui affiche la date actuelle.
+
+#### Exemple de modification :
+
+1. Inclure la bibliothèque `time.h` en haut du fichier source pour obtenir la date et l'heure.
+    ```c/
+    #include <time.h>
+    ```
+
+2. Ajoutez la gestion de la commande `date` dans le corps du programme, comme dans l'exemple suivant :
+    ```c/
+        else if (strcmp(commande, "date") == 0)
+        {
+            time_t t = time(NULL);
+            struct tm tm = *localtime(&t);
+            printf("now: %d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+        }
+    ```
+
+3. Recompilez le programme après modification :
+    ```bash/
+    gcc -o repl repl.c
+    ```
+
+4. Exécutez à nouveau le programme et tapez la commande `date` pour vérifier qu'elle fonctionne correctement.
+
+#### Test de la commande `date` :
+
+- **Commande** : `date`
+    - **Résultat attendu** : Le programme affichera la date et l'heure actuelles.
+    - **Capture d'écran** :
+    
+      ![date](./pictures/date.png)
+
 ### Conclusion
 
 Cet exercice permet de découvrir le fonctionnement basique d'un interpréteur de commandes (REPL) et d'observer comment il gère différentes commandes entrées par l'utilisateur.
