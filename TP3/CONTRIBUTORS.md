@@ -1,2 +1,0 @@
-* Adel AYADI
-* Cédric DARMAISIN
