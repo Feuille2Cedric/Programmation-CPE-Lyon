@@ -5,10 +5,11 @@ Ce projet comprend différents scripts en Python et en C permettant de manipuler
 ## Bibliothèques utilisées
 
 ### C
-* **`#include <stdio.h>`** : Fournit les fonctions d'entrée/sortie standard telles que `printf` et `scanf`.
-* **`#include <math.h>`** : Fournit des fonctions mathématiques telles que `sqrt()`, `sin()`, `cos()`, et des constantes comme `M_PI` pour des calculs avancés.
-* **`#include <stdlib.h>`** : Utilisé pour la gestion dynamique de la mémoire, les fonctions de conversion, et la génération de nombres aléatoires (`rand()`).
-* **`#include <string.h>`** : Contient des fonctions pour manipuler les chaînes de caractères, comme `strcpy()`, `strstr()`, etc.
+* **`#include <stdio.h>`** : Fournit les fonctions d'entrée/sortie standard, telles que `printf` pour l'affichage, `scanf` pour la lecture de l'entrée, et des fonctions pour la manipulation de fichiers (`fopen`, `fclose`, etc.).
+* **`#include <string.h>`** : Contient des fonctions pour manipuler des chaînes de caractères, comme `strcpy` pour la copie, `strcat` pour la concaténation, et `strlen` pour calculer la longueur d'une chaîne.
+* **`#include <time.h>`** : Fournit des fonctions pour manipuler le temps, comme `time` pour obtenir l'heure actuelle ou `clock` pour mesurer le temps écoulé.
+* **`#include <stdlib.h>`** : Inclut des fonctions pour la gestion de mémoire dynamique (`malloc`, `free`), les conversions de chaînes en nombres (`atoi`, `atof`), et la génération de nombres aléatoires (`rand`, `srand`).
+* **`#include <ctype.h>`** : Fournit des fonctions pour manipuler des caractères individuels, comme `isalpha` pour vérifier si un caractère est alphabétique, `isdigit` pour les chiffres, ainsi que `toupper` et `tolower` pour convertir des lettres en majuscules ou minuscules.
 
 ## Références
 
