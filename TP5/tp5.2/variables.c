@@ -1,19 +1,19 @@
 // variables.c
-#include "variables.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <wchar.h>
+#include "variables.h"  // Inclusion pour les définitions de structures et constantes liées aux variables
+#include <stdlib.h>     // Inclusion pour les fonctions d'allocation mémoire (ex. malloc, free)
+#include <string.h>     // Inclusion pour les fonctions de manipulation de chaînes (ex. strdup)
+#include <stdio.h>      // Inclusion pour les fonctions d'entrées/sorties de base (ex. printf)
+#include <wchar.h>      // Inclusion pour la gestion des chaînes de caractères wide (ex. wcsdup, wprintf)
 
-static Variable variables[MAX_VARIABLES]; // Tableau de variables
-static int variable_count = 0; // Compteur de variables
+static Variable variables[MAX_VARIABLES]; // Tableau de stockage des variables définies
+static int variable_count = 0;            // Compteur du nombre de variables actuellement définies
 
-// Initialisation de la table des variables
+// Initialise la table des variables en réinitialisant le compteur de variables
 void init_variables() {
     variable_count = 0;
 }
 
-// Remplace les virgules par des points dans une chaîne pour normaliser les décimales
+// Remplace les virgules par des points dans une chaîne wide pour uniformiser les séparateurs décimaux
 void normalize_decimal_separator(wchar_t *value) {
     for (int i = 0; value[i] != L'\0'; i++) {
         if (value[i] == L',') {
@@ -22,7 +22,7 @@ void normalize_decimal_separator(wchar_t *value) {
     }
 }
 
-// Recherche d'une variable par son nom, retourne l'index ou -1 si non trouvé
+// Recherche d'une variable par son nom ; retourne l'index ou -1 si la variable n'est pas trouvée
 static int find_variable(const wchar_t *name) {
     for (int i = 0; i < variable_count; i++) {
         if (wcscmp(variables[i].name, name) == 0) {
@@ -32,7 +32,6 @@ static int find_variable(const wchar_t *name) {
     return -1;
 }
 
-// Ajoute ou met à jour une variable dans la table de symboles
 int set_variable(const wchar_t *name, const wchar_t *value) {
     int index = find_variable(name);
     VariableType type;
@@ -40,10 +39,10 @@ int set_variable(const wchar_t *name, const wchar_t *value) {
     double float_value;
     wchar_t *string_value = NULL;
 
-    // Normalise les séparateurs décimaux (virgule à point)
+    // Normalise le séparateur décimal (remplace les virgules par des points)
     normalize_decimal_separator((wchar_t *)value);
 
-    // Détermine le type de la valeur (entier, flottant, ou chaîne)
+    // Détermine le type de la valeur (entier, flottant ou chaîne)
     if (swscanf(value, L"%d", &int_value) == 1 && wcschr(value, L'.') == NULL) {
         type = TYPE_INT;
     } else if (swscanf(value, L"%lf", &float_value) == 1) {
@@ -53,7 +52,7 @@ int set_variable(const wchar_t *name, const wchar_t *value) {
         string_value = wcsdup(value);
     }
 
-    // Vérifie le type si la variable existe déjà
+    // Si la variable existe déjà, vérifie que le type est cohérent
     if (index != -1) {
         if (variables[index].type != type) {
             wprintf(L"Erreur : changement de type non autorisé pour la variable %ls\n", name);
@@ -69,7 +68,7 @@ int set_variable(const wchar_t *name, const wchar_t *value) {
         variables[index].type = type;
     }
 
-    // Affecte la valeur en fonction du type
+    // Assigne la valeur en fonction du type détecté
     switch (type) {
         case TYPE_INT:
             variables[index].value.int_value = int_value;
@@ -83,14 +82,14 @@ int set_variable(const wchar_t *name, const wchar_t *value) {
             break;
     }
 
-    // Confirmation de la définition de la variable
+    // Affiche une confirmation de la définition de la variable
     wprintf(L"Variable %ls définie avec la valeur ", name);
     print_variable(&variables[index]);
     wprintf(L"\n");
     return 1;
 }
 
-// Récupère la valeur d'une variable, renvoie 1 si elle est définie, sinon 0
+// Récupère la valeur d'une variable et la stocke dans `result`, renvoie 1 si elle est trouvée, sinon 0
 int get_variable(const wchar_t *name, Variable *result) {
     int index = find_variable(name);
     if (index == -1) {
@@ -100,7 +99,7 @@ int get_variable(const wchar_t *name, Variable *result) {
     return 1;
 }
 
-// Affiche une variable en fonction de son type
+// Affiche une variable selon son type (entier, flottant, ou chaîne de caractères)
 void print_variable(const Variable *var) {
     switch (var->type) {
         case TYPE_INT:
