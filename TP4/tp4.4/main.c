@@ -1,12 +1,16 @@
 // main.c
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include "postfixe.h"
-#include "evaluation_postfixe.h"
+#include <stdio.h>              // Inclusion pour les fonctions d'entrées/sorties standard (ex. printf, fgets)
+#include <string.h>             // Inclusion pour les fonctions de manipulation de chaînes (ex. strchr, strcasecmp)
+#include <ctype.h>              // Inclusion pour les fonctions de classification de caractères (ex. isdigit)
+#include "postfixe.h"           // Inclusion pour les fonctions de conversion infix à postfix
+#include "evaluation_postfixe.h" // Inclusion pour les fonctions d'évaluation d'expression postfixée
 
-// Fonction pour détecter si une chaîne de caractères est une expression arithmétique
-// Retourne 1 si c'est une expression arithmétique, sinon 0
+/**
+ * Détecte si une chaîne de caractères est une expression arithmétique.
+ * Une expression arithmétique doit contenir à la fois des chiffres et des opérateurs.
+ * @param input La chaîne à analyser.
+ * @return 1 si c'est une expression arithmétique, sinon 0.
+ */
 int is_arithmetic_expression(const char *input) {
     int contains_operator = 0;
     int contains_digit = 0;
@@ -23,7 +27,10 @@ int is_arithmetic_expression(const char *input) {
     return contains_digit && contains_operator;
 }
 
-// Fonction pour évaluer une expression arithmétique en notation infixée
+/**
+ * Évalue une expression arithmétique en notation infixée en la convertissant d'abord en postfixée.
+ * @param input La chaîne représentant l'expression en notation infixée.
+ */
 void evaluate_expression(const char *input) {
     char postfix[MAX_EXPR_LENGTH];
     infix_to_postfix(input, postfix); // Convertit l'infixe en postfixe
@@ -33,6 +40,11 @@ void evaluate_expression(const char *input) {
     printf("Résultat de l'évaluation : %f\n", result); // Affiche le résultat
 }
 
+/**
+ * Programme principal qui lit des commandes de l'utilisateur en boucle.
+ * Permet de saisir des expressions arithmétiques en notation infixée, qui sont évaluées
+ * ou des commandes de sortie ("quit" ou "quitter") pour arrêter le programme.
+ */
 int main() {
     char input[MAX_EXPR_LENGTH];
 
@@ -40,7 +52,7 @@ int main() {
         printf("> ");
         fgets(input, sizeof(input), stdin);
 
-        // Supprime le caractère de fin de ligne
+        // Supprime le caractère de fin de ligne pour traiter la commande
         input[strcspn(input, "\n")] = 0;
 
         // Vérifie si la commande est pour quitter le programme
