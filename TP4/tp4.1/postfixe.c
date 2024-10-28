@@ -1,71 +1,82 @@
 // postfixe.c
-#include "postfixe.h"
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "postfixe.h"  // Inclusion pour les définitions de fonctions de conversion infix à postfix
+#include <string.h>    // Inclusion pour la manipulation de chaînes de caractères
+#include <ctype.h>     // Inclusion pour les fonctions de classification de caractères (ex. isdigit)
+#include <stdlib.h>    // Inclusion pour la gestion de mémoire et conversion numérique
+#include <stdio.h>     // Inclusion pour les fonctions d'entrées/sorties standard (ex. printf)
 
-#define STACK_SIZE 100
+#define STACK_SIZE 100  // Taille maximale de la pile pour gérer les opérateurs
 
-// Définition de la pile
+// Définition de la structure de la pile pour stocker les opérateurs pendant la conversion
 typedef struct {
     char items[STACK_SIZE];
     int top;
 } Stack;
 
+// Initialise la pile en fixant son sommet à -1
 void init_stack(Stack *stack) {
     stack->top = -1;
 }
 
+// Vérifie si la pile est vide
 int is_empty(Stack *stack) {
     return stack->top == -1;
 }
 
+// Vérifie si la pile est pleine
 int is_full(Stack *stack) {
     return stack->top == STACK_SIZE - 1;
 }
 
+// Empile un élément dans la pile
 void push(Stack *stack, char value) {
     if (!is_full(stack)) {
         stack->items[++stack->top] = value;
     }
 }
 
+// Dépile un élément de la pile et le retourne
 char pop(Stack *stack) {
     if (!is_empty(stack)) {
         return stack->items[stack->top--];
     }
-    return '\0'; // Valeur par défaut si la pile est vide
+    return '\0'; // Retourne '\0' si la pile est vide
 }
 
+// Renvoie l'élément au sommet de la pile sans le dépiler
 char peek(Stack *stack) {
     return is_empty(stack) ? '\0' : stack->items[stack->top];
 }
 
-// Fonction pour déterminer la priorité d'un opérateur
+// Détermine la priorité d'un opérateur pour gérer l'ordre dans l'expression postfixée
 int precedence(char op) {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;
 }
 
-// Fonction de conversion d'infixe à postfixe
+/**
+ * Convertit une expression de notation infixée en notation postfixée.
+ * @param infix La chaîne représentant l'expression en notation infixée.
+ * @param postfix Chaîne de sortie pour l'expression en notation postfixée.
+ */
 void infix_to_postfix(const char *infix, char *postfix) {
     Stack operators;
-    init_stack(&operators);
-    int k = 0;
+    init_stack(&operators);  // Initialise la pile pour les opérateurs
+    int k = 0;               // Index pour construire la chaîne de sortie postfixée
 
     for (int i = 0; infix[i] != '\0'; i++) {
-        if (isspace(infix[i])) continue;
+        if (isspace(infix[i])) continue; // Ignore les espaces
 
-        // Si l'on rencontre un opérande, on l'ajoute directement à la sortie
-        if (isdigit(infix[i]) || (infix[i] == '.')) {
+        // Ajoute directement un opérande (nombre) à la sortie
+        if (isdigit(infix[i]) || infix[i] == '.') {
             postfix[k++] = infix[i];
-            if (!isdigit(infix[i+1]) && infix[i+1] != '.') {
-                postfix[k++] = ' '; // Espace pour séparer les opérandes
+            // Ajoute un espace après le nombre pour bien séparer dans la notation postfixée
+            if (!isdigit(infix[i + 1]) && infix[i + 1] != '.') {
+                postfix[k++] = ' ';
             }
         }
-        // Si un opérateur est rencontré
+        // Si un opérateur est rencontré, traite la pile selon la priorité
         else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/') {
             while (!is_empty(&operators) && precedence(peek(&operators)) >= precedence(infix[i])) {
                 postfix[k++] = pop(&operators);
@@ -75,10 +86,10 @@ void infix_to_postfix(const char *infix, char *postfix) {
         }
     }
 
-    // Dépiler les opérateurs restants
+    // Vide la pile des opérateurs restants pour les ajouter à la sortie
     while (!is_empty(&operators)) {
         postfix[k++] = pop(&operators);
         postfix[k++] = ' ';
     }
-    postfix[k - 1] = '\0'; // Remplace le dernier espace par un terminateur
+    postfix[k - 1] = '\0'; // Remplace le dernier espace par le caractère de fin de chaîne
 }
